@@ -24,6 +24,18 @@ const NtlPdpaConsent = NtlPdpaConsentModule
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return NtlPdpaConsent.multiply(a, b);
+export function setGrantAnalyticsStorage(callback: () => void) {
+  return NtlPdpaConsent.setGrantAnalyticsStorage(callback);
+}
+
+export function setDenyAnalyticsStorage(callback: () => void) {
+  return NtlPdpaConsent.setDenyAnalyticsStorage(callback);
+}
+
+export function setGrantAdStorage(callback: () => void) {
+  return NtlPdpaConsent.setGrantAdStorage(callback);
+}
+
+export function setDenyAdStorage(callback: () => void) {
+  return NtlPdpaConsent.setDenyAdStorage(callback);
 }

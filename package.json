@@ -76,6 +76,7 @@
     "@types/react": "17.0.21"
   },
   "peerDependencies": {
+    "@react-native-firebase/app": "13.0.0",
     "react": "*",
     "react-native": "*"
   },
