@@ -1,5 +1,6 @@
 #import "NtlPdpaConsent.h"
-#import "Firebase/Firebase.h"
+#import <Firebase/Firebase.h>
+#import <RNFBApp/RNFBSharedUtils.h>
 
 @implementation NtlPdpaConsent
 RCT_EXPORT_MODULE()
