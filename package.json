@@ -7,6 +7,9 @@
   "types": "lib/typescript/src/index.d.ts",
   "react-native": "src/index",
   "source": "src/index",
+  "exports": {
+    ".": "./src/index.tsx"
+  },
   "files": [
     "src",
     "lib",
