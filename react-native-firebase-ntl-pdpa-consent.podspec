@@ -2,6 +2,7 @@ require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 appPackage = JSON.parse(File.read(File.join('..', 'app', 'package.json')))
+
 coreVersionDetected = appPackage['version']
 coreVersionRequired = package['peerDependencies'][appPackage['name']]
 firebase_sdk_version = appPackage['sdkVersions']['ios']['firebase']
@@ -24,19 +25,8 @@ Pod::Spec.new do |s|
 
   s.source_files = "ios/**/*.{h,m,mm}"
 
-  # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
-  # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
-  if respond_to?(:install_modules_dependencies, true)
-    install_modules_dependencies(s)
-  else
-  s.dependency "React-Core"
+  # Firebasee dependency
   s.dependency "RNFBApp"
-
-  if defined?($FirebaseSDKVersion)
-    Pod::UI.puts "#{s.name}: Using user specified Firebase SDK version '#{$FirebaseSDKVersion}'"
-    firebase_sdk_version = $FirebaseSDKVersion
-  end
-
   if defined?($FirebaseSDKVersion)
     Pod::UI.puts "#{s.name}: Using user specified Firebase SDK version '#{$FirebaseSDKVersion}'"
     firebase_sdk_version = $FirebaseSDKVersion
@@ -64,6 +54,14 @@ Pod::Spec.new do |s|
   else
     s.static_framework = false
   end
+
+  # Use install_modules_dependencies helper to install the dependencies if React Native version >=0.71.0.
+  # See https://github.com/facebook/react-native/blob/febf6b7f33fdb4904669f99d795eba4c0f95d7bf/scripts/cocoapods/new_architecture.rb#L79.
+  if respond_to?(:install_modules_dependencies, true)
+    install_modules_dependencies(s)
+  else
+  s.dependency "React-Core"
+
 
   # Don't install the dependencies when we run `pod install` in the old architecture.
   if ENV['RCT_NEW_ARCH_ENABLED'] == '1' then
