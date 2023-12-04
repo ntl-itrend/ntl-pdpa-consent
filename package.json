@@ -29,7 +29,6 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace @react-native-firebase/ntl-pdpa-consent-example",
     "test": "jest",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -89,18 +88,6 @@
   "packageManager": "yarn@3.6.1",
   "engines": {
     "node": ">= 18.0.0"
-  },
-  "jest": {
-    "preset": "react-native",
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "release-it": {
     "git": {
