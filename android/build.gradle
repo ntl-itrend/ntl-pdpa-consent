@@ -1,3 +1,6 @@
+/* groovylint-disable DuplicateStringLiteral */
+import io.invertase.gradle.common.PackageJson
+
 buildscript {
   // Buildscript is evaluated before everything else so we can't use getExtOrDefault
   def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["NtlPdpaConsent_kotlinVersion"]
@@ -12,6 +15,11 @@ buildscript {
     // noinspection DifferentKotlinGradleVersion
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
   }
+}
+
+// Add plugin
+plugins {
+  id "io.invertase.gradle.build" version "1.5"
 }
 
 // Implement start
@@ -205,6 +213,7 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native:+"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  // add firebase
   implementation platform("com.google.firebase:firebase-bom:${ReactNative.ext.getVersion("firebase", "bom")}")
   implementation "com.google.firebase:firebase-analytics"
 }
