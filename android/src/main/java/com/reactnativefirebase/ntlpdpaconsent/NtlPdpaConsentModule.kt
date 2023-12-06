@@ -8,7 +8,7 @@ import java.util.EnumMap
 
 //Import firebase
 //import com.google.firebase.analytics.FirebaseAnalytics
-import com.google.firebase.Firebase
+import com.google.firebase.ktx.Firebase
 
 
 
