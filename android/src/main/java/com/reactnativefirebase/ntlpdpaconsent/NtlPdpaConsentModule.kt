@@ -26,10 +26,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setGrantAnalyticsStorage(cb: Callback) {
     try {
-      firebaseAnalytics = FirebaseAnalytics.getInstance(getReactApplicationContext())
-      val consentMap: MutableMap<FirebaseAnalytics.ConsentType, FirebaseAnalytics.ConsentStatus> = EnumMap<Any?, Any?>(FirebaseAnalytics.ConsentType::class.java)
-      consentMap[FirebaseAnalytics.ConsentType.ANALYTICS_STORAGE] = FirebaseAnalytics.ConsentStatus.GRANTED
-      firebaseAnalytics.setConsent(consentMap)
+      firebaseAnalytics.setConsent {
+        analyticsStorage(ConsentStatus.GRANTED)
+      }
       cb.invoke(null, "analytics_storage granted")
     } catch (e: Exception) {
       cb.invoke(e.toString(), null)
@@ -39,10 +38,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setDenyAnalyticsStorage(cb: Callback) {
     try {
-      firebaseAnalytics = FirebaseAnalytics.getInstance(getReactApplicationContext())
-      val consentMap: MutableMap<FirebaseAnalytics.ConsentType, FirebaseAnalytics.ConsentStatus> = EnumMap<Any?, Any?>(FirebaseAnalytics.ConsentType::class.java)
-      consentMap[FirebaseAnalytics.ConsentType.ANALYTICS_STORAGE] = FirebaseAnalytics.ConsentStatus.DENIED
-      firebaseAnalytics.setConsent(consentMap)
+      firebaseAnalytics.setConsent {
+        analyticsStorage(ConsentStatus.DENIED)
+      }
       cb.invoke(null, "analytics_storage denied")
     } catch (e: java.lang.Exception) {
       cb.invoke(e.toString(), null)
@@ -52,11 +50,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setGrantAdStorage(cb: Callback) {
     try {
-      firebaseAnalytics = FirebaseAnalytics.getInstance(getReactApplicationContext())
-      val consentMap: MutableMap<FirebaseAnalytics.ConsentType, FirebaseAnalytics.ConsentStatus> = EnumMap<Any?, Any?>(FirebaseAnalytics.ConsentType::class.java)
-      consentMap[FirebaseAnalytics.ConsentType.AD_STORAGE] = FirebaseAnalytics.ConsentStatus.GRANTED
-      firebaseAnalytics.setConsent(consentMap)
-      cb.invoke(null, "ad_storage granted")
+      firebaseAnalytics.setConsent {
+        adStorage(ConsentStatus.GRANTED)
+      }
     } catch (e: java.lang.Exception) {
       cb.invoke(e.toString(), null)
     }
@@ -65,11 +61,10 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setDenyAdStorage(cb: Callback) {
     try {
-      firebaseAnalytics = FirebaseAnalytics.getInstance(getReactApplicationContext())
-      val consentMap: MutableMap<FirebaseAnalytics.ConsentType, FirebaseAnalytics.ConsentStatus> = EnumMap<Any?, Any?>(FirebaseAnalytics.ConsentType::class.java)
-      consentMap[FirebaseAnalytics.ConsentType.AD_STORAGE] = FirebaseAnalytics.ConsentStatus.DENIED
-      firebaseAnalytics.setConsent(consentMap)
-      cb.invoke(null, "ad_storage denied")
+      adStorage
+      firebaseAnalytics.setConsent {
+        adStorage(ConsentStatus.DENIED)
+      }
     } catch (e: java.lang.Exception) {
       cb.invoke(e.toString(), null)
     }
