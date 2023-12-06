@@ -7,5 +7,9 @@ import com.facebook.react.bridge.Promise
 abstract class NtlPdpaConsentSpec internal constructor(context: ReactApplicationContext) :
   ReactContextBaseJavaModule(context) {
 
-  abstract fun multiply(a: Double, b: Double, promise: Promise)
+  abstract fun setGrantAnalyticsStorage(cb: Callback)
+  abstract fun setDenyAnalyticsStorage(cb: Callback)
+  abstract fun setGrantAdStorage(cb: Callback)
+  abstract fun setDenyAdStorage(cb: Callback)
+
 }
