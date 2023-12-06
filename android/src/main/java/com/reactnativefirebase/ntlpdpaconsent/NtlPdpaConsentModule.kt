@@ -2,7 +2,13 @@ package com.reactnativefirebase.ntlpdpaconsent
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactMethod
+import com.facebook.react.bridge.Callback
+
 import java.util.EnumMap
+
+//Import firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+
 
 
 class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext) :

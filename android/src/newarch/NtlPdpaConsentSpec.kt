@@ -1,6 +1,7 @@
 package com.reactnativefirebase.ntlpdpaconsent
 
 import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.bridge.Callback
 
 abstract class NtlPdpaConsentSpec internal constructor(context: ReactApplicationContext) :
   NativeNtlPdpaConsentSpec(context) {
