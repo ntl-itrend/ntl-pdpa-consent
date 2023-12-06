@@ -7,14 +7,15 @@ import com.facebook.react.bridge.Callback
 import java.util.EnumMap
 
 //Import firebase
-//import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
 import com.google.firebase.ktx.Firebase
 
 
 
 class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext) :
   NtlPdpaConsentSpec(context) {
-
+  private lateinit var firebaseAnalytics: FirebaseAnalytics
   override fun getName(): String {
     return NAME
   }
@@ -25,7 +26,7 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setGrantAnalyticsStorage(cb: Callback) {
     try {
-      Firebase.analytics.setConsent {
+      firebaseAnalytics.setConsent {
         analyticsStorage(ConsentStatus.GRANTED)
       }
       cb.invoke(null, "analytics_storage granted")
@@ -37,7 +38,7 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setDenyAnalyticsStorage(cb: Callback) {
     try {
-      Firebase.analytics.setConsent {
+      firebaseAnalytics.setConsent {
         analyticsStorage(ConsentStatus.DENIED)
       }
       cb.invoke(null, "analytics_storage denied")
@@ -49,7 +50,7 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setGrantAdStorage(cb: Callback) {
     try {
-      Firebase.analytics.setConsent {
+      firebaseAnalytics.setConsent {
         adStorage(ConsentStatus.GRANTED)
       }
     } catch (e: java.lang.Exception) {
@@ -60,7 +61,7 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setDenyAdStorage(cb: Callback) {
     try {
-      Firebase.analytics.setConsent {
+      firebaseAnalytics.setConsent {
         adStorage(ConsentStatus.DENIED)
       }
     } catch (e: java.lang.Exception) {
