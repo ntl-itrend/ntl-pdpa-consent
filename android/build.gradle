@@ -96,6 +96,7 @@ if (rootProject.ext && rootProject.ext.firebaseJson) {
   if (rnfbConfig.isFlagEnabled('analytics_default_allow_ad_personalization_signals', true) == false) {
     personalizationEnabled = 'false'
   }
+}
 
 // Implement end
 
