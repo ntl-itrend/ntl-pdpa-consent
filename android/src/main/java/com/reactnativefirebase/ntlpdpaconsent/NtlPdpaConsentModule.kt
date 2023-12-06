@@ -26,8 +26,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setGrantAnalyticsStorage(cb: Callback) {
     try {
+      firebaseAnalytics = Firebase.analytics
       firebaseAnalytics.setConsent {
-        analyticsStorage(ConsentStatus.GRANTED)
+        analyticsStorage = firebaseAnalytics.ConsentStatus.GRANTED
       }
       cb.invoke(null, "analytics_storage granted")
     } catch (e: Exception) {
@@ -38,8 +39,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setDenyAnalyticsStorage(cb: Callback) {
     try {
+      firebaseAnalytics = Firebase.analytics
       firebaseAnalytics.setConsent {
-        analyticsStorage(ConsentStatus.DENIED)
+        analyticsStorage = firebaseAnalytics.ConsentStatus.DENIED
       }
       cb.invoke(null, "analytics_storage denied")
     } catch (e: java.lang.Exception) {
@@ -50,8 +52,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setGrantAdStorage(cb: Callback) {
     try {
+      firebaseAnalytics = Firebase.analytics
       firebaseAnalytics.setConsent {
-        adStorage(ConsentStatus.GRANTED)
+        adStorage = firebaseAnalytics.ConsentStatus.GRANTED
       }
     } catch (e: java.lang.Exception) {
       cb.invoke(e.toString(), null)
@@ -61,8 +64,9 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   @ReactMethod
   override fun setDenyAdStorage(cb: Callback) {
     try {
+      firebaseAnalytics = Firebase.analytics
       firebaseAnalytics.setConsent {
-        adStorage(ConsentStatus.DENIED)
+        adStorage = firebaseAnalytics.ConsentStatus.DENIED
       }
     } catch (e: java.lang.Exception) {
       cb.invoke(e.toString(), null)
