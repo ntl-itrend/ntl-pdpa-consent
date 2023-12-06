@@ -8,6 +8,7 @@ import java.util.EnumMap
 
 //Import firebase
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.Firebase
 
 
 
@@ -15,7 +16,6 @@ class NtlPdpaConsentModule internal constructor(context: ReactApplicationContext
   NtlPdpaConsentSpec(context) {
   private val firebaseAnalytics = Firebase.analytics
 
-  val adStorage = FirebaseAnalytics.ConsentType.AD_STORAGE
   override fun getName(): String {
     return NAME
   }
