@@ -215,7 +215,7 @@ dependencies {
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   // add firebase
   implementation platform("com.google.firebase:firebase-bom:${ReactNative.ext.getVersion("firebase", "bom")}")
-  implementation "com.google.firebase:firebase-analytics"
+  implementation "com.google.firebase:firebase-analytics-ktx"
 }
 
 if (isNewArchitectureEnabled()) {
